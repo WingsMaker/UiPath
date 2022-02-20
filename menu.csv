@@ -1,14 +1,14 @@
-Design,Solution Design,https://mysite.intranet.ihis/personal/lim0758a/images/nhgp_workplace/solution_design.html
-Design,High Level Workflow,https://mysite.intranet.ihis/personal/lim0758a/images/nhgp_workplace/workflow.html
-Detail Workflows,Main Flow,https://mysite.intranet.ihis/personal/lim0758a/images/nhgp_workplace/workflow_Main.html
-Detail Workflows,Initialization,https://mysite.intranet.ihis/personal/lim0758a/images/nhgp_workplace/workflow_Initialization.html
-Detail Workflows,SAP Length of Service Report,https://mysite.intranet.ihis/personal/lim0758a/images/nhgp_workplace/workflow_LenofService.html
-Detail Workflows,SAP InfoSet Query,https://mysite.intranet.ihis/personal/lim0758a/images/nhgp_workplace/workflow_InfoSetQuery.html
-Detail Workflows,Consolidate/Transform,https://mysite.intranet.ihis/personal/lim0758a/images/nhgp_workplace/workflow_Consolidation.html
-Detail Workflows,Export to CSV,https://mysite.intranet.ihis/personal/lim0758a/images/nhgp_workplace/workflow_WorkplaceExport.html
-Data Structures,Data Columns,https://mysite.intranet.ihis/personal/lim0758a/images/nhgp_workplace/datacols.html
-Known Errors,SAP Logon Error,https://mysite.intranet.ihis/personal/lim0758a/images/nhgp_workplace/error_saplogon.html
-Known Errors,Missing Configuration File,https://mysite.intranet.ihis/personal/lim0758a/images/nhgp_workplace/error_configfile.html
-Known Errors,Missing SAP Export Files,https://mysite.intranet.ihis/personal/lim0758a/images/nhgp_workplace/error_inputfile.html
-Known Errors,UI Element Missing,https://mysite.intranet.ihis/personal/lim0758a/images/nhgp_workplace/error_ui_element.html
-Known Errors,Bot Missing,https://mysite.intranet.ihis/personal/lim0758a/images/nhgp_workplace/error_bot_missing.html
+Design,Solution Design,https://wingsmaker.github.io/UiPath/nhgp_workplace/solution_design.html
+Design,High Level Workflow,https://wingsmaker.github.io/UiPath/nhgp_workplace/workflow.html
+Design,Data Columns,https://wingsmaker.github.io/UiPath/nhgp_workplace/datacols.html
+Detail Workflows,Main Flow,https://wingsmaker.github.io/UiPath/nhgp_workplace/workflow_Main.html
+Detail Workflows,Initialization,https://wingsmaker.github.io/UiPath/nhgp_workplace/workflow_Initialization.html
+Detail Workflows,SAP Length of Service Report,https://wingsmaker.github.io/UiPath/nhgp_workplace/workflow_LenofService.html
+Detail Workflows,SAP InfoSet Query,https://wingsmaker.github.io/UiPath/nhgp_workplace/workflow_InfoSetQuery.html
+Detail Workflows,Consolidate/Transform,https://wingsmaker.github.io/UiPath/nhgp_workplace/workflow_Consolidation.html
+Detail Workflows,Export to CSV,https://wingsmaker.github.io/UiPath/nhgp_workplace/workflow_WorkplaceExport.html
+Known Errors,SAP Logon Error,https://wingsmaker.github.io/UiPath/nhgp_workplace/error_saplogon.html
+Known Errors,Missing Configuration File,https://wingsmaker.github.io/UiPath/nhgp_workplace/error_configfile.html
+Known Errors,Missing SAP Export Files,https://wingsmaker.github.io/UiPath/nhgp_workplace/error_inputfile.html
+Known Errors,UI Element Missing,https://wingsmaker.github.io/UiPath/nhgp_workplace/error_ui_element.html
+Known Errors,Bot Missing,https://wingsmaker.github.io/UiPath/nhgp_workplace/error_bot_missing.html

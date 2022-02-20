@@ -36,6 +36,7 @@
 	fetch("https://wingsmaker.github.io/UiPath/menu.csv")
 	.then( r => r.text() )
 	.then( t => processData(t) );
+	menu_type = 1; // 0 for horizontal , 1 for vertical
 	function processData(csv) {
 		var menu_txt = '<div class="navbar" id="myNavbar">';
 		var menu_grp = '';
@@ -55,8 +56,13 @@
 							menu_txt += '</div></div>';
 						}
 						menu_grp = linedata[0];
-						menu_txt += '<div class="subnav"><button class="subnavbtn">' + menu_grp;
-						menu_txt += '<i class="fa fa-caret-down"></i></button><div class="subnav-content">';
+						if (menu_type==0) {
+							menu_txt += '<div class="subnav"><button class="subnavbtn">' + menu_grp;
+							menu_txt += '<i class="fa fa-caret-down"></i></button><div class="subnav-content">';
+						} else {
+							menu_txt += '<div class="dropdown"><button class="dropbtn">' + menu_grp;
+							menu_txt += '<i class="fa fa-caret-down"></i></button><div class="dropdown-content">';
+						}
 					}
 				}
 				if (linedata[1] == '') {
@@ -68,11 +74,11 @@
 					menu_item = 0;
 				}
 			}
-		}
+		}				
 		if (menu_item == 0) {
 			menu_txt += '</div></div>';
 		}
-		menu_txt += '</div>';
+		menu_txt += "<a onclick='skypeShareKeyDownHandler(event)' class='skype-share'>Skype</a></div>";
 		document.getElementById("menu").innerHTML = menu_txt;
 	}
 	

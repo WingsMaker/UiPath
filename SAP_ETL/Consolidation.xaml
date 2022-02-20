@@ -1,0 +1,516 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Consolidatiom" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="export_path" Type="InArgument(x:String)" />
+    <x:Property Name="excelpath" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1452,2929</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Consolidatiom_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="32">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="31">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Consolidatiom" sap:VirtualizedContainerService.HintSize="1462,2864" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="range1" />
+      <Variable x:TypeArguments="x:String" Name="range2" />
+      <Variable x:TypeArguments="x:String" Name="range3" />
+      <Variable x:TypeArguments="x:String" Name="export_template" />
+      <Variable x:TypeArguments="x:Int32" Name="file_cnt" />
+      <Variable x:TypeArguments="x:Boolean" Name="export_file_exist" />
+      <Variable x:TypeArguments="x:String" Name="master_filename" />
+      <Variable x:TypeArguments="x:Boolean" Name="isOffice2016" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Check input files and update master file" sap:VirtualizedContainerService.HintSize="1420,2772" sap2010:WorkflowViewState.IdRef="Sequence_9">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="Check input files " sap:VirtualizedContainerService.HintSize="1378,66" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="variable1" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,51" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign.AssignOperations>
+            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[range1]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[export_path &amp; "export1.mhtml"]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[range2]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[export_path &amp; "export2.mhtml"]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[range3]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[export_path &amp; "export3.mhtml"]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[export_template]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[export_path &amp; "exported_table.xlsx"]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:Int32">[file_cnt]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[master_filename]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[export_path &amp; "sap_export.xlsx"]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+            </scg:List>
+          </ui:MultipleAssign.AssignOperations>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:MultipleAssign>
+        <ui:FileExistsX DisplayName="File Exists" Exists="[isOffice2016]" sap:VirtualizedContainerService.HintSize="431,132" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="C:\Program Files\Microsoft Office\Office16\excel.exe">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:FileExistsX>
+        <ui:FileExistsX DisplayName="File Exists" Exists="[export_file_exist]" sap:VirtualizedContainerService.HintSize="431,51" sap2010:WorkflowViewState.IdRef="FileExistsX_2" Path="[range1]">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:FileExistsX>
+        <If Condition="[export_file_exist]" DisplayName="file_cnt 1" sap:VirtualizedContainerService.HintSize="431,51" sap2010:WorkflowViewState.IdRef="If_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[file_cnt]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[file_cnt + 1]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Then>
+        </If>
+        <ui:FileExistsX DisplayName="File Exists" Exists="[export_file_exist]" sap:VirtualizedContainerService.HintSize="431,51" sap2010:WorkflowViewState.IdRef="FileExistsX_3" Path="[range2]">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:FileExistsX>
+        <If Condition="[export_file_exist]" DisplayName="file_cnt 2" sap:VirtualizedContainerService.HintSize="431,51" sap2010:WorkflowViewState.IdRef="If_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[file_cnt]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[file_cnt + 1]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Then>
+        </If>
+        <ui:FileExistsX DisplayName="File Exists" Exists="[export_file_exist]" sap:VirtualizedContainerService.HintSize="431,51" sap2010:WorkflowViewState.IdRef="FileExistsX_4" Path="[range3]">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:FileExistsX>
+        <If Condition="[export_file_exist]" DisplayName="file_cnt 3" sap:VirtualizedContainerService.HintSize="431,51" sap2010:WorkflowViewState.IdRef="If_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[file_cnt]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[file_cnt + 1]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Then>
+        </If>
+        <ui:FileExistsX DisplayName="File Exists" Exists="[export_file_exist]" sap:VirtualizedContainerService.HintSize="431,51" sap2010:WorkflowViewState.IdRef="FileExistsX_5" Path="[export_template]">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:FileExistsX>
+        <If Condition="[export_file_exist]" DisplayName="file_cnt 4" sap:VirtualizedContainerService.HintSize="431,51" sap2010:WorkflowViewState.IdRef="If_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[file_cnt]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[file_cnt + 1]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Then>
+        </If>
+      </Sequence>
+      <If Condition="[file_cnt = 4]" DisplayName="Input files found" sap:VirtualizedContainerService.HintSize="1378,2574" sap2010:WorkflowViewState.IdRef="If_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="Update master file" sap:VirtualizedContainerService.HintSize="957,2416" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[master_filename]" DisplayName="Copy from exported table template to sap export" sap:VirtualizedContainerService.HintSize="915,157" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[export_template]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CopyFile>
+            <uix:NApplicationCard AttachMode="ByInstance" DisplayName="merge into single excel" sap:VirtualizedContainerService.HintSize="915,2127" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="37ebb3f8-a9e7-472a-8d73-6ebcacb057f1" Version="V1">
+              <uix:NApplicationCard.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="881,1838" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Sequence DisplayName="merge into single excel" sap:VirtualizedContainerService.HintSize="839,1643" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Delay DisplayName="10 seconds" Duration="00:00:10" sap:VirtualizedContainerService.HintSize="797,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="797,361" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                        <TryCatch.Finally>
+                          <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                        </TryCatch.Finally>
+                        <TryCatch.Try>
+                          <uix:NClick ClickType="Single" ContinueOnError="True" DisplayName="Click 'Enable Editing'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="37ebb3f8-a9e7-472a-8d73-6ebcacb057f1" Timeout="3" Version="V1">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable DesignTimeRectangle="781, 73, 77, 16" ElementType="Text" FriendlyName="'Enable Editing'" FullSelectorArgument="&lt;uia cls='MsoCommandBar' name=' ' /&gt;&lt;uia cls='NetUIElement' name='Protected View' /&gt;&lt;uia cls='NetUILabel' name='Enable Editing' /&gt;" FuzzySelectorArgument="&lt;uia cls='MsoCommandBar' name=' ' /&gt;&lt;uia cls='NetUIElement' name='Protected View' /&gt;&lt;uia cls='NetUILabel' name='Enable Editing' role='Text' automationid='' check:fulltext='Enable Editing' /&gt;" Guid="90057638-5c30-4e97-93ec-80e52df4ff70" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFEAAAAUCAYAAAD1GtHpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF2SURBVFhH7ZXLcYYwDIRTHD3QBDXQAzVQBF1QCx38mT0ss1YkxwSdMjp8Y9l6WF7AfF3X9SneUSImUCImUCImUCImUCIm0Ig4TVPDvu9N8BOQf57nY5+H9gSivlgX0LYxPd9f+SFiVvFeraf7jMZHcZnn8igRExgSEev4hDCCbdtu37Is9/q6rkM5mHMfjIyZ5/mOUTRe0VzU1zja9AP2Z+OiPo/jaNYxen1070TdCGLBZmHNI1EOD6M+2hCONg6jD4IgXtFc3o+RiNb2fNHZevWV4TcxakKfIkAjXg4aZUP06ZMmPJDCeF1Drn1zNS6yR32/1VdeiQhgcx2bPhXRNupha4F/IyI2sp8CRsbwfqGPNaxNcSM03q5zP34R0R6M83xaO8qz9ZXunUgRbLLO8bQwh5j2TcT9hhGoUJpPgcnInci+eDDAvVQA2vSxdhRn5736SiNiEQPxIKLnKxEHwZvo/fRAidiBVxXxYkCJmECJ+Jrr8w2Xwl1RPKDtPwAAAABJRU5ErkJggg==" InformativeScreenshot="7134354fc85a85e730e3c9e6279d92d3.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='XLMAIN' title='sap_export.xlsx  [Protected View] - Excel' /&gt;" SearchSteps="Selector, FuzzySelector, Image">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target DesignTimeRectangle="765, 70, 109, 22" ElementType="Button" FriendlyName="'Enable Editing'" FullSelectorArgument="&lt;uia cls='MsoCommandBar' name=' ' /&gt;&lt;uia cls='NetUIElement' name='Protected View' /&gt;&lt;uia cls='NetUISimpleButton' name='Enable Editing' /&gt;" FuzzySelectorArgument="&lt;uia cls='MsoCommandBar' name=' ' /&gt;&lt;uia cls='NetUIElement' name='Protected View' /&gt;&lt;uia cls='NetUISimpleButton' name='Enable Editing' role='Button' automationid='' check:fulltext='Enable Editing' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHEAAAAaCAYAAACATbNJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG1SURBVGhD7ZbLcYQwEEQdHDmQBDFw2gSIgSMBkAUpOAUywNWHpnrHGsx/jWoOrzRoPpKmYbVf0/drCp5NiJgBs4hd1wUPIyniOI7BQwgRMyBEzIAQMQNCxAwIETPgMhGLonijbdtk3BqQPwzDZl8K3RPw9sW6gLaNWfLdyaUinnW4pVpb11kb78Wdea6zCBEdvLgzz3UWt4uIefyEYQRN08y+qqrm+bquV+XgmetgZExZlnOMovGK5qK+xtGmH3B/Ns7bZ9/3b/MYU/vYw6UiKnpQiAWbB9M84uWwmeqjDeFoo5n6IhDEK5rL+9ET0dopn3e2pfpH+ciX6DVB32KARqRy0Cg2hD590wkbqjBe55Brv1yN8+y1vr/qH+XfiAhgcx6H3iqibVQKWwuEiA7eJpcOan+KMDKG9wt9rGFtiuuh8Xae6/EXwVuDcSmf1vbybP2jXCqiQhHs5vUZbyueIab9EnG/YQQqlOZTYLLmTuS+2FjAtVQA2vSxthdnn5fqH+UyEQMfiAcRU749hIgfAF9i6k/XXkLEm+BVQVIxewkRMyBEzABXxOBZ/BIxeC4h4uN5TT+wTkFzuM2FTgAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NClick.Target>
+                          </uix:NClick>
+                        </TryCatch.Try>
+                      </TryCatch>
+                      <If Condition="[isOffice2016]" DisplayName="isOffice2016" sap:VirtualizedContainerService.HintSize="797,1086" sap2010:WorkflowViewState.IdRef="If_5">
+                        <If.Then>
+                          <Sequence sap:VirtualizedContainerService.HintSize="376,800" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <uix:NClick ClickType="Single" DisplayName="Select file" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="37ebb3f8-a9e7-472a-8d73-6ebcacb057f1" Version="V1">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable DesignTimeRectangle="388, 0, 160, 34" FriendlyName="'excel.exe sap_export.xl…'" Guid="7d58f35b-57db-4fba-8d5b-790b5309c0c3" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAKAAAAAiCAYAAADYt9L+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAATFSURBVHhe7Zs5TuRAFIbnbuw7iH3f9+UCZIAIEMcAiRwhAmJECAEBpJyAG9ToK+b3FEW5GxvaM6hf8Mmu7ZXr1d+12f2rtbXVGca/wgRo/FNMgEbltLS0+GtbW5sJ0KgWRNfb2+vGx8fd4uKiCdCoju7ubjczM+OWlpY8y8vLJkCj8TDlDg0N+REP4a2srLjNzU23s7NjAjQaD1OuRr319XUvvO3tbbexsWECNBrPwsJCJr7d3V0vPAnSBGg0lJ6eHi801nuIb21tLROfCdBoOCMjI15oGv1C8ZkAjYbD5gOhMe2aAI3K4egFoWkKZiQ0ARqVwcHz7OysF5tGwXAdaAI0Gk5/f3+2E+b8LxShCdCoBNaC8/PzmQg5C2Q6NgFWzOvrq3d+Ku27oI6Qs7OzZL6ylG3D4ODghzNBE2ABWM90dXX5hXVnZ2epjijbeUVodB1fsY8IWRPyWo5p2AT4SThQHRsbc3Nzc34qmZqa8h2xt7eXzJ9HswsQ9FFCpV/DPD4++gcHTQlh3N3dXZZXeZR2fX2dpaXAGcr78vLi47iqnGwpP/d59kNbyqezLMIPDw/v0iF8dqhXtzov9kmtckUI6xD1bJOuZzk9PfVxKb8C4dh+UZhBJicnqxEgDY47KSZsFPd0DvdyQq0G4xylh3VRLk5XfJ598mIjTDs8PPTTBfe3t7f+RTrrF6Uxrci2II1rqm7CeT7JK1cEbITITp5tfJF6ljBf7NeyzxZTiQB5WB46HGmARslJoF9e3EAcJFHEUCa0ARKX7MdliUvZly3Ft7e3u6enJ3d5eZkJ7ujoyB+qSpDHx8d+SmZ9qHJQr+56PonLCZUTYTtEXnzKtuyF+aCWX7lP2S9DpWtAnM3D07i44fzaygqQsqm0vM7Msx8LcHR01D0/P7urqyu3tbXl0xjxmI5ZvxA+OTnx4YGBgawcfLbu0CeE88oVIa5DpGzH/SBq+TXPfhkq34TgcKCB+kWp49UJ3GtkUFqtBpOe6jDiw2sYn2ef+4uLCzc8POwODg58mDx8RMm9BKg1IfUyIsabEu7DqyAct0U+UXp4LUOqDsWHV4HQVH8I+fL8+qMEqF+eUDwNJ4wQ4xGQ9Ybyp5wQIhEJlZVTuYa/5jAPnJ+f+9N6vtzY39/P4oG69f0a4VCA9/f3Po6NCSLkXuVvbm5cR0dHsm46L+UTrnnPXITQrmzWsx3mVz+k/Kq8P0qARfnOBqYI7bN24w8yCIpRjrUdh6RMueTh1F6CS8GGhHzkR6iUXV1d9YKcmJhwfX19H+o3/vKjBEh8TJznM1BO9tnBIiSEg5gkPK56X1kLRIvwyC8xqjxCZINiIsyn6UfA6enpd58KIShAXPoTTT2UDzuITmKmDsKc/Me7ZOON/1KAVcK7SUY6BPhZwdUCG4AYNaISzyu8VP3NTtMLkFdrEiCiiQVVFkTI1IwICfPPsFT9zU7TC5CdL8LTui0WUhk0AmJTO2hePaXqb3aaXoAclSAYjYLser8yEmKLNaTWgNjijDBVt2EC9HAGKBFqJNRGpCihDW1AbP2XjwnwDxyVsB5ENIyECCklsFow3SI+jaJ8csSnR6n6jDdMgAHsiCXAoiMg+SmHCBEfh9s28tWj1f0G2J39od9IBGwAAAAASUVORK5CYII=" InformativeScreenshot="52744e243e0f6508044a0b05810e70a1.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='XLMAIN' title='sap_export.xlsx - Excel' /&gt;" SearchSteps="Image" TargetType="ImageBased" />
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="select range" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" ScopeIdentifier="37ebb3f8-a9e7-472a-8d73-6ebcacb057f1" Shortcuts="[d(hk)][d(ctrl)]a[u(ctrl)][u(hk)][d(hk)][k(tab)][u(hk)]">
+                              <uix:NKeyboardShortcuts.Target>
+                                <uix:TargetAnchorable DesignTimeRectangle="392, 2, 172, 30" FriendlyName="'excel.exe sap_export.xl…'" Guid="c7452089-77df-4f1a-ba09-b71a9fd21eec" ImageBase64="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" InformativeScreenshot="1d2796d7496e33f79968428e5cf04cb9.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='XLMAIN' title='sap_export.xlsx - Excel' /&gt;" SearchSteps="Image" TargetType="ImageBased" />
+                              </uix:NKeyboardShortcuts.Target>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NKeyboardShortcuts>
+                            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                            <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="copy" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_2" ScopeIdentifier="37ebb3f8-a9e7-472a-8d73-6ebcacb057f1" Shortcuts="[d(hk)][d(ctrl)]c[u(ctrl)][u(hk)]">
+                              <uix:NKeyboardShortcuts.Target>
+                                <uix:TargetAnchorable DesignTimeRectangle="392, 2, 172, 30" FriendlyName="'excel.exe sap_export.xl…'" Guid="c7452089-77df-4f1a-ba09-b71a9fd21eec" ImageBase64="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" InformativeScreenshot="1d2796d7496e33f79968428e5cf04cb9.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='XLMAIN' title='sap_export.xlsx - Excel' /&gt;" SearchSteps="Image" TargetType="ImageBased" />
+                              </uix:NKeyboardShortcuts.Target>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NKeyboardShortcuts>
+                            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_4" />
+                            <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="paste" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_3" ScopeIdentifier="37ebb3f8-a9e7-472a-8d73-6ebcacb057f1" Shortcuts="[d(hk)][d(alt)d(ctrl)]v[u(ctrl)u(alt)][u(hk)][d(hk)]v[u(hk)][d(hk)][k(enter)][u(hk)]">
+                              <uix:NKeyboardShortcuts.Target>
+                                <uix:TargetAnchorable DesignTimeRectangle="392, 2, 172, 30" FriendlyName="'excel.exe sap_export.xl…'" Guid="c7452089-77df-4f1a-ba09-b71a9fd21eec" ImageBase64="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" InformativeScreenshot="1d2796d7496e33f79968428e5cf04cb9.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='XLMAIN' title='sap_export.xlsx - Excel' /&gt;" SearchSteps="Image" TargetType="ImageBased" />
+                              </uix:NKeyboardShortcuts.Target>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NKeyboardShortcuts>
+                            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_5" />
+                            <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="save" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_4" ScopeIdentifier="37ebb3f8-a9e7-472a-8d73-6ebcacb057f1" Shortcuts="[d(hk)][d(ctrl)][k(home)][u(ctrl)][u(hk)][d(hk)][d(ctrl)]s[u(ctrl)][u(hk)]">
+                              <uix:NKeyboardShortcuts.Target>
+                                <uix:TargetAnchorable DesignTimeRectangle="392, 2, 172, 30" FriendlyName="'excel.exe sap_export.xl…'" Guid="c7452089-77df-4f1a-ba09-b71a9fd21eec" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAKwAAAAeCAYAAACxM/WmAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAWbSURBVHhe7Zy5TuUwGIXn3dj3fd/3nRegA0SBeAyQ6BGioEaUUFBAyxPwBh59Hp2Mxzi5SW4yQoqLT4kT+zc5PvGS5PKrs7PTRCJ10tHRYbddXV2mv7/fjI+Pm6mpKbOwsGBWV1fN+vq6ZWtryxwdHSXpENGwkVrBpIODg2ZmZsasra19M+DGxobZ3Nw029vb5vDw0BwcHHzL4xING6kNetPFxcXEbDLnzs6O2dvbM/v7+9ak9Kqwu7tr87gG9YmGjVQOU4CxsbGkR8WkGFTmVE/KMXpWzrcyqoiGjVQOUwAZjN5UBqUHxZwYOTQ9yEM0bKRytJDCrBrqfeOVJRo2UikDAwPWWAzxmJUh3zddO0TDRiplcnLSGku9q2+4domGjVQKiy2MxTQgGjby4+FRFsbSlICe1jddO0TDRiqFFwVLS0vWXOplq5zHRsNGKmd4eDh5UsCz1ipNGw0bqQXmsisrK9ZkemnA9CDvC4I0omFr5uvryzZW6FxVUIfL9fV1MF9Zyl7D6Ojot2eymJeXB74R8xINmwHzsb6+PruQ6O3tLdVwZRu7CHXX0U58TMucljdb7gcuZU0bDZsCD8Cnp6fN8vKyHdrm5+dtwx0fHwfzp9F0w4I+gsG0GJWPXuht+ZwwZMosajPs29ubvVDQEOUee35+TvIqj849PDwk50IgnvJ+fn7aY2xVTrGUn/20+G4s5dOzRNKvr6//nAf3b4dWdauxfU2yyhXBrUO0is15/S1XV1f2WEhXIO3HLwoj1NzcXGI8famldF5qMSwC+Y3q44rAPo3JvkTLEggxdd6ti3L+eR1Pi09eYrjnzs7O7PDF/tPTkx3C6BF0jmFOsQXn2IbqJp2mSVq5IhDDRXHSYqNF6G9x8/m6lv3bfPguFuPR06Jp0UVYLYbl4rhItycDRJCooDvbFwRBZSIfyrgxQGZUfL8sx0LxFUvHu7u7zfv7u7m7u0sMen5+bkWVgS8uLuwUgfmtykGrultp4pcTKifc6xBpx0OxFc/NB1m6sh+KXwbWBBhPvy4oOi2odQ5L43CxiOELxd1c1rCUDZ1La/y0+L5h+dnGx8eHub+/t0MW5+hREYr5F+nLy0ubHhkZScpB3rpdTUinlSuCX4cIxfbbQWTpmha/DPo4RoYtuviqfdFFAwGC6I6VUdRo7Kvn0bksgTgfamCOu1v3eFp89m9vb83ExIQ5PT21afIgJPsyLJCmXnpcfxHGvrsVpP1rkSY6727LEKpDx92twJiq34V8abrWZVhpmwd0r20Oy0UKHUco0hjX72GZLyl/SDQXmU6orBqBrdtbuHng5ubGvo3hy6KTk5PkOFC3vt8k7Rr25eXFHmMhhnjsq/zj46Pp6ekJ1k1jhzRhm/Y3F8GNq5itYrv51Q4hXZW3KsPqW4OihqVNGPVq72HzUKUgIdz4zD3diT9zUx5qa9XKg21fLBcWYOQjPyJSFvEx8OzsrBkaGvpWf+QvdBToiO55Dau8P96wHPfx8+SBcorPCh8RMBrmk1HZIowvlg8m190u86o8xmVBFk2bDlMvdNSHMb6+PnQE6KuOpHE9LL+FRwTEwrQYUBP/vL8zUj7iYFKZnzpI82bHf4oQ+QP/kwDt8hpW3yGgNekfYdj/Ce+2NcTkNWgWxAAEVY/NcR7fhOpvOjIsN3mWYdFU7aSRjylX4wzLq1YJobu2ChCYXgPTkuaXo6H6mw7TJfRhVKMNGJHcjkP7aiM0Jc1Ui0Vt4wzLkwGMyjCj3rBd1MMSUwLzKjJUf9Ph5Yx0Q380c6dmGJVpgGtWYLFG+cYZlrvUHW4Qp52ellgIrTkssXhGG6o78gf9UBHdMCXGFepIMLE0ZqGmso0zLHC3yrQSCPEkUBHcGFpwxflrNixI+RJOGqpnBTRUB4KW/75R7DS/ARAgoDAL1puoAAAAAElFTkSuQmCC" InformativeScreenshot="1d2796d7496e33f79968428e5cf04cb9.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='XLMAIN' title='sap_export.xlsx - Excel' /&gt;" SearchSteps="Image" TargetType="ImageBased" />
+                              </uix:NKeyboardShortcuts.Target>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NKeyboardShortcuts>
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="376,927" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <uix:NClick ClickType="Single" DisplayName="sap_export.xlsx - office 365" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="37ebb3f8-a9e7-472a-8d73-6ebcacb057f1" Version="V1">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable DesignTimeRectangle="1, 220, 26, 20" FriendlyName="'Select All'" FullSelectorArgument="&lt;uia automationid='Grid' name='Grid' role='data grid' /&gt;&lt;uia name='Select All' role='header item' tableCol='0' tableRow='0' /&gt;" FuzzySelectorArgument="&lt;uia automationid='Grid' name='Grid' role='data grid' /&gt;&lt;uia name='Select All' role='header item' automationid='' check:fulltext='Select All' /&gt;" Guid="701508dd-458f-49e6-bc01-ffaf87221e2f" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAB0AAAAYCAYAAAAGXva8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADsSURBVEhL3ZZZCoMwFEX77S767zq6kuyglNI9OY9xMa7FcoSEp9jWMQWF8+H1xUMkyfPyej46z/Occm6p1rpTSvU4k9Z17V5aVdVJpb7vD+7LsjxWipCXy6woiuOkRuhMKoVjaZ7n+0vHQpDPsyyz+S7SKSHImjRNbb5Z+kkIsm436TchyNokSWy+WvpLCLI+jmObr5LOEYIcs0k6VwhyXBRFNl8kXSIEOTYMQ5tvWkhL+Is0CAK30uv9NqCXNk3T/07Q3YHeB7Qj4LDm7ASOM2CzA/sPWJ0sFuBTArODSamZ9lEYmbmcS9u27d5Hki9MbGmczQAAAABJRU5ErkJggg==" InformativeScreenshot="a4d3264667e9a34832696bfe7ddb9b0c.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='XLMAIN' title='sap_export.xlsx - Excel' /&gt;" SearchSteps="FuzzySelector, Image">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target DesignTimeRectangle="195, 1, 122, 48" FriendlyName="'‪sap_export.xlsx‬'" FullSelectorArgument="&lt;uia cls='MsoCommandBar' helpText='Ribbon toolbar' /&gt;&lt;uia cls='NetUIAnchor' name='‪sap_export.xlsx‬' /&gt;" FuzzySelectorArgument="&lt;uia cls='MsoCommandBar' helpText='Ribbon toolbar' /&gt;&lt;uia cls='NetUIAnchor' name='‪sap_export.xlsx‬' role='Menu Item' automationid='' check:fulltext='‪sap_export.xlsx‬' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAH4AAAAzCAYAAABR5bw6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIZSURBVHhe7ZbtbcJAFAT5TV90RBSlEhqhCWqgBmogGqRFT5c7jIwTo+yuNHJ8X/a9sWM2X58f1+DHZrvdXoMfEW9KxJsS8aZEvCkRb0rEmxLxpkS8KRFvSsSbEvGmRLwpEW9KxJsS8aZEvCkRb0rEmxLxpkT8gpDdbtftezcifsAciXPmrEXED5gjcc6ctVhE/Pl8vm2aHA6HH22n0+k+ljBGOR6P974eFFK5XC63No6ap7U0nozWr2sR3avmcZ9t6r3D1LUlvq3Jo3kjeumNm8PL4tlEW5wWooIQisLfEqG+HhRM/fVapO1X+2h9xrJGr4/Uh4TUdSuEY+/anI9qQji28x5R0+ufy8vi2QCpRQM91cp+v7+1k7ppJElGC3PaSKrWb+eS3vpaq46t1yZ1Xntembo2kFFN2nlTkF77Kyz2jWeThAJr4+rjCZ8rnrm9vqni63wN8TqvNeF8NG8NFv1xx0aBjVJU2lRwbZ7oTVDfqMBAeoUi9VjbR+sTrUUbqX31Pojuue0n9dgbI1QT9dfjmizyja9RO28q4QFo3/j6I2rq6Zc8RXNVTI71vwIZrS/ZykgsaA19q4nmP7o2Y3o1IaN5a7DoG/8MpH0rluS31/8vvI34Xtoxz0Aifpq88ab8ufjwHkS8KRFvSsSbEvGmRLwpEW9KxJsS8aZEvCkRb0rEmxLxpkS8KRFvSsSbEvGmRLwl2+s3Qxkk3n8XvTEAAAAASUVORK5CYII=" SearchSteps="Selector, FuzzySelector, Image" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NClick.Target>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NClick>
+                            <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_5" ScopeIdentifier="37ebb3f8-a9e7-472a-8d73-6ebcacb057f1" Shortcuts="[d(hk)][d(ctrl)]a[u(ctrl)][u(hk)][d(hk)][k(tab)][u(hk)]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NKeyboardShortcuts>
+                            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_6" />
+                            <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_6" ScopeIdentifier="37ebb3f8-a9e7-472a-8d73-6ebcacb057f1" Shortcuts="[d(hk)][d(ctrl)]c[u(ctrl)][u(hk)]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NKeyboardShortcuts>
+                            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_7" />
+                            <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_7" ScopeIdentifier="37ebb3f8-a9e7-472a-8d73-6ebcacb057f1" Shortcuts="[d(hk)][d(alt)d(ctrl)]v[u(ctrl)u(alt)][u(hk)][d(hk)]v[u(hk)][d(hk)][k(enter)][u(hk)][d(hk)][d(ctrl)][k(home)][u(ctrl)][u(hk)]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NKeyboardShortcuts>
+                            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_8" />
+                            <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,178" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_8" ScopeIdentifier="37ebb3f8-a9e7-472a-8d73-6ebcacb057f1" Shortcuts="[d(hk)][d(ctrl)]s[u(ctrl)][u(hk)]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NKeyboardShortcuts>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                    <Assign sap:VirtualizedContainerService.HintSize="839,61" sap2010:WorkflowViewState.IdRef="Assign_5">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[file_cnt]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </ActivityAction>
+              </uix:NApplicationCard.Body>
+              <uix:NApplicationCard.TargetApp>
+                <uix:TargetApp Area="0, 0, 0, 0" Arguments="[range1 &amp; &quot; &quot; &amp; range2 &amp; &quot; &quot; &amp; range3 &amp; &quot; &quot; &amp; master_filename]" FilePath="[excelpath]" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGvSURBVFhH7Zc9SEJRGIZdo9B+pRoShwhChIoQhCBbgsgpGgJpKyKIaAmClqDBoSmyLQikrbaCppaksdvUGDQ1FjQ0fvlezpGjfefcn86FkF548Hr4vvO+nh/U2L+8lK6uO3XIL1O1gyA4wkYvzsQEY2JE2OjFmZjgTEwIG704ExOciQlhoxdnYoIzMSFs9Bo5LpEXqcpq+ADd+wWnDoWhZ3eWBjYKbojfBGAn90vH/CjFt/ON9zKIX/5WgNRhke5fnlz2bk4a4zOVtcY4ntUe6ytw+nBJ0MfXpxsIYzCG8Npabz0ATGEOle/OafFsx32GskcrTbUgkjOweVV2DRFEfnqE4WojO4TSGHp9f2NrQGQBrp9rwp7fe0l8OkXJpQkaLOVcuBoTbAC579gCeR6wLVyt9QA4hFhyCPsOIPVWqFgPwF1DGeji8bapFlgNoF45dcnlrYBQo/ZEcgaC0BYBQn8dJ7byPwIERfzs0KtzfIh0dGWGKZFLRxugd26MvEguT7KT+0HY6NW3kCET/cUsO7FfhI1eXJNNhI1eXJNNhI1e9SKntcki3n/N2lyx2De7iUsgzKBEqQAAAABJRU5ErkJggg==" InformativeScreenshot="dcf980fd41aeec7ad1e474ca5b21c655.png" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='Excel'/&gt;" />
+              </uix:NApplicationCard.TargetApp>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NApplicationCard>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap:VirtualizedContainerService.HintSize="376,276" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Transform exported files into datasheet" sap:VirtualizedContainerService.HintSize="334,84" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Files is missing :&quot; &amp; vbCrLf &amp; &quot;exported_table.xlsx&quot; &amp; vbCrLf &amp; &quot;or export1.mhtml&quot; &amp; vbCrLf &amp; &quot;or export2.mhtml&quot; &amp; vbCrLf &amp; &quot;or export3.mhtml&quot;  &amp; vbCrLf]" />
+            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[file_cnt]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">0</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </If.Else>
+      </If>
+    </Sequence>
+  </Sequence>
+</Activity>

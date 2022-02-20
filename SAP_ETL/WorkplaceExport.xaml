@@ -1,0 +1,437 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="WorkplaceExport" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="master_filename" Type="InArgument(x:String)" />
+    <x:Property Name="range1" Type="InArgument(x:String)" />
+    <x:Property Name="range2" Type="InArgument(x:String)" />
+    <x:Property Name="range3" Type="InArgument(x:String)" />
+    <x:Property Name="export_filename" Type="InArgument(x:String)" />
+    <x:Property Name="excelpath" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1240,4043</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>WorkplaceExport_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="34">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="46">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="WorkplaceExport" sap:VirtualizedContainerService.HintSize="526,3978" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="isOffice2016" />
+      <Variable x:TypeArguments="x:Boolean" Name="export_file_exist" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:FileExistsX DisplayName="File Exists" Exists="[isOffice2016]" sap:VirtualizedContainerService.HintSize="484,132" sap2010:WorkflowViewState.IdRef="FileExistsX_4" Path="C:\Program Files\Microsoft Office\Office16\excel.exe">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:FileExistsX>
+    <ui:FileExistsX DisplayName="File check" Exists="[export_file_exist]" sap:VirtualizedContainerService.HintSize="484,132" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[master_filename]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:FileExistsX>
+    <If Condition="[export_file_exist]" DisplayName="File existed ?" sap:VirtualizedContainerService.HintSize="484,3542" sap2010:WorkflowViewState.IdRef="If_4">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <uix:NApplicationCard AttachMode="ByInstance" DisplayName="managing sap_export.xlsx" sap:VirtualizedContainerService.HintSize="434,3365" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Version="V1">
+          <uix:NApplicationCard.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,3076" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,178" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][k(f5)][u(hk)][d(hk)][k(del)][u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Reference'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Text="[range1 &amp; vbCrLf]" Version="V1">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="16, 210, 265, 14" ElementType="InputBox" FriendlyName="'edit RichEdit Control'" FullSelectorArgument="&lt;uia automationid='1027' cls='RichEdit20W' name='RichEdit Control' /&gt;" FuzzySelectorArgument="&lt;uia automationid='1027' cls='RichEdit20W' name='RichEdit Control' role='edit' /&gt;" Guid="e7d82246-7c6f-4936-b975-349ae6afc5ea" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQ0AAAASCAYAAABB5YvyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABWSURBVHhe7dQxDQAgAMAw/FshXAiE4ID9rYiOufYB+PG+kAbwTRpAIg0gkQaQSANIpAEk0gASaQCJNIBEGkAiDSCRBpBIA0ikASTSABJpAIk0gGSufS4QAD62wmGuWwAAAABJRU5ErkJggg==" InformativeScreenshot="240df37f5d6cb28df565bbb88699d952.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='bosa_sdm_XL9' title='Go To' /&gt;" SearchSteps="Selector, FuzzySelector, Image">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="14, 191, 54, 13" ElementType="Text" FriendlyName="'Reference'" FullSelectorArgument="&lt;uia name='Reference:' role='text' /&gt;" FuzzySelectorArgument="&lt;uia name='Reference:' role='text' automationid='' check:fulltext='Reference:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADoAAAARCAYAAACM0L/dAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEBSURBVFhH7VTBEcQgCLQp+qEamrEXa7EDLobooWIyN5PM5Ewe+0B20QXVxRj5CXiNzobX6GxQRj2jc+wU0NdkCx6FCxTM/F3QGAWmsMUeFwPIvuQtNJobY2x0jbVRNXH0dbzgO/2Wl9eAEYEdEIcDHlFqsuTqmzLSNGtpSCUvGBoNpA8lV1TMBCbIvFqzz6sPvcerDqyavT6TxoBZ59jo1hm9mZVbIMVbo1fwdBN0Lq9ZdXoMJpq6o0XWJtb6lTxLM6rTY/xGAzGUayPG+5+13ehsno4tzaDOL280oXqnq/F8RXIDes25PCveNNmIVWff6NwoRqUjNrTgX/G8ic6NyB8ivzTnkAamCAAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NTypeInto>
+                <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_2" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][d(alt)]e[u(alt)][u(hk)][d(hk)]d[u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_3" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][k(home)][u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_4" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][k(f5)][u(hk)][d(hk)][k(del)][u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Reference'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Text="[range2 &amp; vbCrLf]" Version="V1">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="16, 210, 265, 14" ElementType="InputBox" FriendlyName="'edit RichEdit Control'" FullSelectorArgument="&lt;uia automationid='1027' cls='RichEdit20W' name='RichEdit Control' /&gt;" FuzzySelectorArgument="&lt;uia automationid='1027' cls='RichEdit20W' name='RichEdit Control' role='edit' /&gt;" Guid="e7d82246-7c6f-4936-b975-349ae6afc5ea" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQ0AAAASCAYAAABB5YvyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABWSURBVHhe7dQxDQAgAMAw/FshXAiE4ID9rYiOufYB+PG+kAbwTRpAIg0gkQaQSANIpAEk0gASaQCJNIBEGkAiDSCRBpBIA0ikASTSABJpAIk0gGSufS4QAD62wmGuWwAAAABJRU5ErkJggg==" InformativeScreenshot="240df37f5d6cb28df565bbb88699d952.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='bosa_sdm_XL9' title='Go To' /&gt;" SearchSteps="Selector, FuzzySelector, Image">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="14, 191, 54, 13" ElementType="Text" FriendlyName="'Reference'" FullSelectorArgument="&lt;uia name='Reference:' role='text' /&gt;" FuzzySelectorArgument="&lt;uia name='Reference:' role='text' automationid='' check:fulltext='Reference:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADoAAAARCAYAAACM0L/dAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEBSURBVFhH7VTBEcQgCLQp+qEamrEXa7EDLobooWIyN5PM5Ewe+0B20QXVxRj5CXiNzobX6GxQRj2jc+wU0NdkCx6FCxTM/F3QGAWmsMUeFwPIvuQtNJobY2x0jbVRNXH0dbzgO/2Wl9eAEYEdEIcDHlFqsuTqmzLSNGtpSCUvGBoNpA8lV1TMBCbIvFqzz6sPvcerDqyavT6TxoBZ59jo1hm9mZVbIMVbo1fwdBN0Lq9ZdXoMJpq6o0XWJtb6lTxLM6rTY/xGAzGUayPG+5+13ehsno4tzaDOL280oXqnq/F8RXIDes25PCveNNmIVWff6NwoRqUjNrTgX/G8ic6NyB8ivzTnkAamCAAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NTypeInto>
+                <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_4" />
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_5" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][d(alt)]e[u(alt)][u(hk)][d(hk)]d[u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_6" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][k(home)][u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_5" />
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_7" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][d(ctrl)d(shift)]l[u(shift)u(ctrl)][u(hk)][d(hk)][k(home)][u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_6" />
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_8" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][d(alt)][k(down)][u(alt)][u(hk)][d(hk)]f[u(hk)][d(hk)]n[u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'excel.exe Custom'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Text="[&quot;Yes&quot; &amp; vbCrLf]" Version="V1">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="208, 63, 116, 40" FriendlyName="'excel.exe Custom'" Guid="68b9df99-a14f-4c33-a6a1-93c59a92f0a6" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHQAAAAoCAYAAAAv1t6rAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACSSURBVHhe7dHBCYAwAATB9N+K+LKxdKAfCwi+zDIHC/efMee81QloLKCxgMYCGgtoLKCxgMYCGgtoLKCxgMZaAj3OS5u0DGp7DGhsn0DHGO+zvw1obEBjAxob0NiAxgY0NqCxAY0NaGxAYwMaG9DYPoHafwc0NqCxLYNqj5ZAtU9AYwGNBTQW0FhAYwGNBTTVvB/UUoHvZHON4wAAAABJRU5ErkJggg==" InformativeScreenshot="c1b0992fe70b5d21aa45f80011f72818.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='bosa_sdm_XL9' title='Custom AutoFilter' /&gt;" SearchSteps="Image" TargetType="ImageBased">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="16, 63, 186, 39" FriendlyName="'excel.exe Custom'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAALoAAAAnCAYAAAC49lJsAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALBSURBVHhe7ZsxjrJAGIa5FInhAt7AmsSEE3gCC2p6j2CsTPQC1nRWVpYmmljbfMsHM/IxDvw/KwrsvG/yZHfmmxmG5VHHYr37/U7vsabQ8ylOq23f130pxb5HfpyqekkaF+N0jdthGFrHAvAOHxA9Yx2SJ/vSmHzPy/qYkNaVcR6F65o2AB3RgegADB+IDpwAogMngOjACSA6cAKIDpwAogMngOjACSA6cIKviL7ebAHola+JjiBdZrPZtAKiI6MMy3s+n/8biI6MMhAdcSIQHXEiEB1xIiMVfUeRF1ByUs3BZAj7Gurfpt9A9E4D0YcaU/TtdltpS7jWo+j8ANW/10WR8TBF7eUhy3k71Ud0SgI1PspGmFGyJJEa41FQWdR2Pdlnjtex76XaL+9N7eO5lGyfKAnUnIzyeuYchCNFPx6PNJvNaLVaVQRnuI9rvYm+i8TD3LGA5cN8qQVJpoFuelQ4xWJIgWyC6yjxtIz59crx9ddrlsy+F8t6zzXM9erWl/fTvAdXY76j22TXknOtJ9GbHvi/auW7HlOKJkR+yTvXkzUZrtn20mY9o52/KPR6dXMQju2MLmWXknNthKLXP/Ti+NJwdOn0enW1NuuJdu0niTkH4dR9GdWyS8mZnkQv3oHbH12MeS+pHiHKNAjGrV8dXer20nRvRe35wSNr/LsuVOZAdFvqRGdYcCk509+X0VNCgf6YbvNlVM6rnGNVn/X4Yspia+s1q9fjFwH3W19c1r1kabq3XGJbTd5D0xdYhNMkuo3+RHcmEPUTgeiDC0T/RCA64kQgOuJEIDriRCA64kRY9DZ8TXQA+uQrogPQNxAdOAFEB04A0YETjFb0w+FAi8WCptMpTSaT/Ce3ud82fqj8lfsYOqMT/Xa70XK5pPl8Tvv9ni6XCz0ej/wnt7mf69fr1Tp/KPyV+xgHd/oBpa9HmkOgrGYAAAAASUVORK5CYII=" SearchSteps="Image" TargetType="ImageBased" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NTypeInto>
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_9" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][k(home)][u(hk)][d(hk)][k(down)][u(hk)][d(hk)][d(ctrl)d(shift)][k(down)][u(shift)u(ctrl)][u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_10" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][k(oem2)][u(hk)][d(hk)]h[u(hk)][d(hk)]d[u(hk)][d(hk)]r[u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_11" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][d(ctrl)d(shift)]l[u(shift)u(ctrl)][u(hk)][d(hk)][k(home)][u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_12" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][k(f5)][u(hk)][d(hk)][k(del)][u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Reference'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NTypeInto_4" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Text="[range3 &amp; vbCrLf]" Version="V1">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="16, 210, 265, 14" ElementType="InputBox" FriendlyName="'edit RichEdit Control'" FullSelectorArgument="&lt;uia automationid='1027' cls='RichEdit20W' name='RichEdit Control' /&gt;" FuzzySelectorArgument="&lt;uia automationid='1027' cls='RichEdit20W' name='RichEdit Control' role='edit' /&gt;" Guid="e7d82246-7c6f-4936-b975-349ae6afc5ea" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQ0AAAASCAYAAABB5YvyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABWSURBVHhe7dQxDQAgAMAw/FshXAiE4ID9rYiOufYB+PG+kAbwTRpAIg0gkQaQSANIpAEk0gASaQCJNIBEGkAiDSCRBpBIA0ikASTSABJpAIk0gGSufS4QAD62wmGuWwAAAABJRU5ErkJggg==" InformativeScreenshot="240df37f5d6cb28df565bbb88699d952.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='bosa_sdm_XL9' title='Go To' /&gt;" SearchSteps="Selector, FuzzySelector, Image">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="14, 191, 54, 13" ElementType="Text" FriendlyName="'Reference'" FullSelectorArgument="&lt;uia name='Reference:' role='text' /&gt;" FuzzySelectorArgument="&lt;uia name='Reference:' role='text' automationid='' check:fulltext='Reference:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADoAAAARCAYAAACM0L/dAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEBSURBVFhH7VTBEcQgCLQp+qEamrEXa7EDLobooWIyN5PM5Ewe+0B20QXVxRj5CXiNzobX6GxQRj2jc+wU0NdkCx6FCxTM/F3QGAWmsMUeFwPIvuQtNJobY2x0jbVRNXH0dbzgO/2Wl9eAEYEdEIcDHlFqsuTqmzLSNGtpSCUvGBoNpA8lV1TMBCbIvFqzz6sPvcerDqyavT6TxoBZ59jo1hm9mZVbIMVbo1fwdBN0Lq9ZdXoMJpq6o0XWJtb6lTxLM6rTY/xGAzGUayPG+5+13ehsno4tzaDOL280oXqnq/F8RXIDes25PCveNNmIVWff6NwoRqUjNrTgX/G8ic6NyB8ivzTnkAamCAAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NTypeInto>
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_13" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][d(alt)]e[u(alt)][u(hk)][d(hk)]d[u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_13" />
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="FileDelete.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="file_fullpath">[export_filename]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:InvokeWorkflowFile>
+                <If Condition="[isOffice2016]" DisplayName="Office 2016 or 365 ?" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" ContinueOnError="True" DelayBetweenShortcuts="1" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,178" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_15" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][d(alt)]f[u(alt)][u(hk)][d(hk)]a[u(hk)][d(hk)]y[u(hk)][d(hk)]2[u(hk)]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NKeyboardShortcuts>
+                  </If.Then>
+                  <If.Else>
+                    <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" ContinueOnError="True" DelayBetweenShortcuts="1" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,178" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_16" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][d(alt)]f[u(alt)][u(hk)][d(hk)]a[u(hk)][d(hk)]o[u(hk)]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NKeyboardShortcuts>
+                  </If.Else>
+                </If>
+                <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" ContinueOnError="True" DelayBetweenShortcuts="1" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_22" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][d(alt)]t[u(alt)][u(hk)][d(hk)]c[u(hk)][d(hk)][d(shift)][k(tab)][u(shift)][u(hk)][d(hk)][d(alt)]n[u(alt)][u(hk)][d(hk)][k(del)][u(hk)][d(hk)][k(home)][u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_15" />
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'File name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NTypeInto_5" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Text="[export_filename &amp; vbCrLf]" Version="V1">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="124, 353, 125, 39" FriendlyName="'excel.exe Save As'" Guid="d731d3d8-21ed-49f2-a5de-ee01ef351718" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAH0AAAAnCAYAAAAilUe0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC2SURBVHhe7dWxCcQwDEBR7+TG02QW7+Euo2STTKIQwsFxpFB7+l/wwNjlB7mNMUIsRgcyOpDRgYwOZHQgowMZHSgV3ak16ehv9/pPRgcyOpDRgYwOZHQgowMZHcjoQG3eh3lEnHtsP48fRq+lnftmdJgWx3x9+Gb0WvzTgZ7orneUZ70bHcX1DmR0IKMDGR3I6EBGB0pHd+pMKrpqMTpQKvpaS4Wko/feVYTRgYwOZHQgo+P0uAAlrEHYN1YnsQAAAABJRU5ErkJggg==" InformativeScreenshot="1daacc3cc3ad73034f388d9231e503e6.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='#32770' title='Save As' /&gt;" SearchSteps="Image" TargetType="ImageBased">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="18, 361, 115, 23" ElementType="Text" FriendlyName="'File name'" FullSelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' automationid='' check:text='File name:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHcAAAAbCAYAAABGDxCrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFFSURBVGhD7ZXhtcIgDEYdi2mYhVkYhU2YJK9B0oa81Kr/TL947oEiBOQWfKSUCMQEcgMDuQGRgNyAcHAJuQGB3MBAbmAgNzCQG5gbyi3Uxs8+otdMKVfq26dm6SP134WDy5vJvRIHuT8K5AbmTJxuN33GlS3RqCzjmNm/Hhf+uOrn90X/D7SyjilH7lYS5XrMpHO4a+DEvVKWPgYOLm/9n8ubei5X1ze2DV02XecUccPmi5dgz7uFyJlvwJ57yXGyBu4DuRqzUW67qi8nZsZ++ryxzvMU9wxnjqscb63hPxxcQu7SbjfWO4WaKzEyPlPtzhwf5XgfyHXbbV1dly42p3rWV+eQ5M1x9cx1Zw24li12E71208deix9dy3xa57jeqH1zcvnZWwPk3hfIDQzkBgZyAwO5gYHcwEBuYCQgNzCQG5ZEf6SmNB4ivF6MAAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector, Image" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NTypeInto>
+                <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_16" />
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" ContinueOnError="True" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_17" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][d(ctrl)][k(home)][u(ctrl)][u(hk)][d(hk)][d(alt)]s[u(alt)][u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_17" />
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" ContinueOnError="True" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_18" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][d(alt)]y[u(alt)][u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_21" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)][d(alt)][k(f4)][u(alt)][u(hk)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NKeyboardShortcuts>
+                <If Condition="[isOffice2016]" DisplayName="Office 2016 or 365 ?" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="334,178" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_19" ScopeIdentifier="ec641a6c-f2a9-49f9-8d5b-7c04cd381246" Shortcuts="[d(hk)]n[u(hk)]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NKeyboardShortcuts>
+                  </If.Then>
+                </If>
+              </Sequence>
+            </ActivityAction>
+          </uix:NApplicationCard.Body>
+          <uix:NApplicationCard.TargetApp>
+            <uix:TargetApp Area="0, 0, 0, 0" Arguments="[master_filename]" FilePath="[excelpath]" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJASURBVFhHY6AWkMtxkoAyaQsUClw45QtczOTzndPk85wny+c5HZDPdXoFdMB/qBLqAcUSN12FErcohWK3FoUi140KhS63gQ74D3TAf6AD/gMdAMRO/4EO+E+RA5QqPOWUKjy8Fcs9ShXLPBYplrmfVyx1/w90wH+gA/4DHfAf6ID/QAf8p5UD/gMd8B/ogP9ABwAx0HIyHABWQxz+AMTtUOup5wBiwafvX8COgFpPfweAAMg8qPW0iQKYJegYBkBsqPXDyAGkALwOKFnZ83/Zia3/Z+5fheKAvddOgBPQ+rN7aBsCsbMrocr+/w+anA92QMrcOjD/z9+//+1a4mgfBRce3QArXHV6J9gBJ+5cBPNXnNhGn1yQOr8erPD7r5//Y2ZWgNm//vz+b1EfQb9EeOP5fbDiB6+fgum5B9fSNxdkLWyGKv///+uPb/9N68LoWxDlL22HKocEv21zDP1CQK3C+/+DN5Cgv/vqMZhee2YX/RxQv34qWCHIEZHTy8BsUBZ0bU+mfRRo1wT8f/XpHVhh3bop4Gx49ekdMH/7pcO0D4GeHfPBit5++fBfo9IH7IDCpR1gMRDw68umrQNaNs8EF8WgRAgrilVLPcGF0fdfP/4fuXWetlEAywWj1fGAVce0dgCoVAWa9xlqPW2igAD+DMRdENuBgFoOgBpHOgA6ANYxqQA6gP4dE1wA6AADoANAXbN2oAO2AB1wj64OwAaADuABOgDWOZ0GdMBhoAPe0s0BuADQAdJQJgmAgQEAJHUeYp4rxhcAAAAASUVORK5CYII=" InformativeScreenshot="e6afa70f60986cf019d54ab935fa90a9.png" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='sap_export.xlsx - Excel'/&gt;" />
+          </uix:NApplicationCard.TargetApp>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </uix:NApplicationCard>
+      </If.Then>
+    </If>
+  </Sequence>
+</Activity>
